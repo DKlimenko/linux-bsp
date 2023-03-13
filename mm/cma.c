@@ -33,6 +33,7 @@
 #include <linux/io.h>
 #include <linux/kmemleak.h>
 #include <trace/events/cma.h>
+#include <execinfo.h>
 
 #include "cma.h"
 
@@ -418,6 +419,12 @@ struct page *cma_alloc(struct cma *cma, size_t count, unsigned int align,
 	size_t i;
 	struct page *page = NULL;
 	int ret = -ENOMEM;
+
+	const int BT_BUF_SIZE 100;
+    void *buffer[BT_BUF_SIZE];
+    char **strings;
+
+    backtrace(buffer, BT_BUF_SIZE);
 
 	if (!cma || !cma->count || !cma->bitmap)
 		return NULL;
