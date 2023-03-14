@@ -422,7 +422,7 @@ struct page *cma_alloc(struct cma *cma, size_t count, unsigned int align,
 	if (!cma || !cma->count || !cma->bitmap)
 		return NULL;
 
-	pr_err("%s(cma %p, count %zu, align %d)\n", __func__, (void *)cma,
+	pr_err("### %s(cma %p, count %zu, align %d)\n", __func__, (void *)cma,
 		 count, align);
 	dump_stack();
 
