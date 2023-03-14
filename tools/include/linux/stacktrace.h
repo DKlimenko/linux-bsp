@@ -21,10 +21,10 @@ static inline void print_stack_trace(struct stack_trace *trace, int spaces)
 
 static inline int dump_stack(void)
 {
-	void *array[64];
+	void *array[264];
 	size_t size;
 
-	size = backtrace(array, 64);
+	size = backtrace(array, 264);
 	backtrace_symbols_fd(array, size, 1);
 
 	return 0;
